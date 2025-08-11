@@ -44,9 +44,6 @@ main() {
 
   install_essential_packages
 
-  # Refresh the terminal.
-  source ~/.bashrc
-
   echo
   echo "--- Preparation Finished Successfully! ---"
   echo "Note: You may need to restart your terminal or run 'source ~/.bashrc' to use new tools."
