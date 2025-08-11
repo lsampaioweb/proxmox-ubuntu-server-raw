@@ -3,6 +3,11 @@ Project with Ansible scripts to create an Ubuntu template on Proxmox from an ISO
 
 ### Manual Usage:
 
+1. Change to the ansible directory.
+    ```bash
+    cd ansible
+    ```
+
 1. Run the installation script for required dependencies.
     ```bash
     sudo ./install-requirements.sh
