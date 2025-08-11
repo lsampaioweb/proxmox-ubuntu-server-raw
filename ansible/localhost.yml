@@ -1,0 +1,7 @@
+---
+- name: "Preparing the local machine with the minimum settings"
+  hosts: "ControlMachine"
+  become: true
+
+  roles:
+    - "template"

@@ -1,19 +1,31 @@
 ---
-# The domain name of the HomeLab.
-domain: "lan.homelab"
+# Path where the certificate authority (CA) certificates are stored.
+ca_certificates_path: "/usr/local/share/ca-certificates"
 
-# All servers are located in Aracaju - Brazil. Maceio is the closest city.
-timezone: "America/Maceio"
+# Files that will be copied to the CA certificates path.
+ca_certificates:
+  - "ca.lan.homelab.crt"
 
-# Brazilian NTP Servers.
-ntp_service: "timesyncd"
-ntp_servers:
-  - "ntp-pool.lan.homelab"
+# SSH known hosts file.
+ssh_known_hosts: "/etc/ssh/ssh_known_hosts"
 
-# Path of the SSL and SSH CA Certificate.
-certificate_authority_path: "/opt/certificates/ca.{{ domain }}"
-ssl_ca_certificate_path: "{{ certificate_authority_path }}/ca.{{ domain }}.crt"
-ssh_ca_certificate_path: "{{ certificate_authority_path }}/ca_host_key.pub"
+# SSH CA public keys for host verification.
+ssh_host_ca_keys:
+  - "ca.lan.homelab.pub"
+
+system_settings:
+  # Sets the system's timezone.
+  timezone: "America/Maceio"
+  # NTP configuration for time synchronization.
+  ntp:
+    # Service to use: 'timesyncd' (recommended for clients) or 'chronyd' (for servers).
+    service: "timesyncd"
+    # Your Fortigate NTP server IP or hostname
+    servers:
+      - "ntp-pool.{{ domain }}"
+
+  # Sets the boot menu timeout in seconds.
+  grub_timeout: 2
 
 # The name of the root user used in VM.
 user_password_id: "local_admin"
