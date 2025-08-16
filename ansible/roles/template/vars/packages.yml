@@ -1,13 +1,15 @@
 ---
 apt_packages:
-  # Desktop Essentials - Core packages for desktop functionality and remote access.
-  - {name: "sudo"} # To enable elevated command.
-  - {name: "qemu-guest-agent"} # To enhance Proxmox integration with the VM.
-  - {name: "openssh-server"} # To enable SSH.
-  - {name: "cloud-init"} # To enable cloud-init.
-  - {name: "python-is-python3"}
-  - {name: "pipx"} # A tool for installing and managing Python packages.
-  - {name: "python3-psutil"} # Retrieves system/process info; required by community.general.dconf.
+  # System Essentials - Core system services and administrative tools.
+  - {name: "sudo"} # Administrative privileges for system management.
+  - {name: "qemu-guest-agent"} # Enhanced Proxmox VM integration and monitoring.
+  - {name: "openssh-server"} # SSH remote access service.
+  - {name: "cloud-init"} # VM initialization and provisioning service.
+  # Python Environment - Development and automation tools.
+  - {name: "python-is-python3"} # Python 3 as default Python interpreter.
+  - {name: "pipx"} # Isolated Python package installation and management.
+  - {name: "python3-psutil"} # System and process information library.
   - {name: "python3-passlib"} # Password hashing library with bcrypt support.
-  - {name: "python3-jmespath"} # Queries JSON data using JMESPath expressions.
-  - {name: "ubuntu-drivers-common"} # To enable the installation of the latest drivers.
+  - {name: "python3-jmespath"} # JSON query expressions for data processing.
+  # Hardware & Drivers - Hardware support and driver management.
+  - {name: "ubuntu-drivers-common"} # Latest hardware driver installation support.
