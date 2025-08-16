@@ -1,28 +1,53 @@
-# Setup the machine with the default applications and settings
+# Ubuntu Server Raw Template
 
-### Tasks:
+**Foundation Layer**: Universal base template for ALL virtual machines. (servers and desktops)
 
-### 1. Install the Homelab's CA Certificate.
+## Overview
 
-### 2. Setup Brazilian timezone.
+This template creates the fundamental foundation that every VM in the infrastructure builds upon. It establishes the core system configuration, security, and essential services required by all machines.
 
-### 3. Setup Brazilian NTP Servers.
+## System Configuration
 
-### 4. Disable IPV6.
+### Security & Trust
+- **Homelab CA Certificate**: Installs custom certificate authority for internal services.
+- **IPv6 Disable**: Disables IPv6 system-wide for security and compatibility.
 
-### 5. Install required packages.
+### Time & Location
+- **Timezone**: Configures Brazilian timezone (America/Sao_Paulo).
+- **NTP Servers**: Sets up Brazilian NTP servers for accurate time synchronization.
 
-### 6. Create a local Ansible user.
+### System Services
+- **Cloud-Init**: Enables cloud-init for VM provisioning automation.
+- **Hardware Hotplug**: Enables dynamic hardware addition/removal.
+- **GRUB Boot Menu**: Configures boot menu timeout settings.
+- **Network Interface Names**: Sets predictable network interface naming.
 
-### 7. Enable cloud-init.
+## Package Installation
 
-### 8. Enable hardware hotplug.
+### Core System Packages
+- `sudo` - Administrative privileges.
+- `qemu-guest-agent` - Enhanced Proxmox VM integration.
+- `openssh-server` - Remote SSH access.
+- `cloud-init` - VM initialization service.
 
-### 9. Remove unnecessary packages.
+### Python Environment
+- `python-is-python3` - Python 3 as default Python.
+- `pipx` - Isolated Python package management.
+- `python3-psutil` - System information library.
+- `python3-passlib` - Password hashing with bcrypt.
+- `python3-jmespath` - JSON query expressions.
 
-### 10. Recreate the machine-id.
+### Hardware & Drivers
+- `ubuntu-drivers-common` - Latest hardware driver support.
 
-### 11. Remove logs files created during the installation.
+## User Management
+- **Ansible User**: Creates dedicated automation user account.
+- **SSH Configuration**: Sets up default SSH client configuration.
+
+## System Cleanup
+- **Package Removal**: Removes unnecessary packages to minimize footprint.
+- **Machine-ID Reset**: Generates new machine-ID for unique VM identity.
+- **Log Cleanup**: Removes installation logs and temporary files.
 
 #
 ### Created by:
