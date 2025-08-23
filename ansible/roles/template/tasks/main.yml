@@ -1,4 +1,9 @@
 ---
+- name: "Changing the hostname"
+  ansible.builtin.import_role:
+    name: "common"
+    tasks_from: "debian/os/hostname"
+
 - name: "Trusting CA certificates"
   ansible.builtin.import_role:
     name: "common"
