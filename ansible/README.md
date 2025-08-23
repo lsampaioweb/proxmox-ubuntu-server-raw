@@ -12,11 +12,6 @@ Project with Ansible scripts to create an Ubuntu template on Proxmox from an ISO
 
     1. Virtualbox VM:
 
-        Install required dependencies.
-        ```bash
-        sudo ./install-requirements.sh
-        ```
-
         Install and setup application.
         ```bash
         ansible-playbook localhost.yml
