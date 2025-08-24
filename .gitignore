@@ -14,6 +14,7 @@ user-data
 
 # Mac OSX Files.
 .DS_Store
+.ansible/
 
 # Terraform hidden files should not be committed to Git.
 *.terraform*
