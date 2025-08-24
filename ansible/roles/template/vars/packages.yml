@@ -13,3 +13,7 @@ apt_packages:
   - {name: "python3-jmespath"} # JSON query expressions for data processing.
   # Hardware & Drivers - Hardware support and driver management.
   - {name: "ubuntu-drivers-common"} # Latest hardware driver installation support.
+  # Core System Infrastructure - Fundamental services for all systems.
+  - {name: "rsyslog"} # System logging service (needed by all systems).
+  - {name: "acl"} # File system access control lists (fundamental permission system).
+  - {name: "libnss3-tools"} # Certificate management utilities (core security infrastructure).
