@@ -1,9 +1,12 @@
 [submodule "ansible/roles/common"]
 	path = ansible/roles/common
 	url = https://github.com/lsampaioweb/ansible-common-tasks.git
+	branch = main
 [submodule "packer/iso"]
 	path = packer/iso
 	url = https://github.com/lsampaioweb/packer-proxmox-ubuntu-iso.git
+	branch = main
 [submodule "ansible/roles/kvm_setup"]
 	path = ansible/roles/kvm_setup
 	url = https://github.com/lsampaioweb/ansible-kvm-cloud-init.git
+	branch = main
