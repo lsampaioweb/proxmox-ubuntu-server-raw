@@ -4,10 +4,15 @@
     name: "common"
     tasks_from: "debian/os/hostname"
 
-- name: "Trusting CA certificates"
+- name: "Adding CA certificates to system trust store"
   ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/trust-ca-certificate"
+
+- name: "Adding CA certificates to pipx environments"
+  ansible.builtin.import_role:
+    name: "common"
+    tasks_from: "debian/packages/pipx-fix-ssl"
 
 - name: "Configuring system timezone"
   ansible.builtin.import_role:
