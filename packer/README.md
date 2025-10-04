@@ -32,21 +32,25 @@ You have to create a Packer user, password and token. Read the documentation on 
 Run these commands to execute Packer:
 
 ```bash
-  cd packer
-#   ./pkr.sh $1 $2 $3 $4
-#   $1 -> validate or build.
-#   $2 -> home or homelab.
-#   $3 -> abort, ask, run-cleanup-provisioner or cleanup.
-#   $4 -> debug.
-#   e.g:
-# ./pkr.sh validate home
-# ./pkr.sh build home ask debug
+cd packer
+# ./pkr.sh $1 $2 $3 $4
+#          $1 -> validate or build.
+#          $2 -> home or homelab.
+#          $3 -> abort, ask, run-cleanup-provisioner or cleanup.
+#          $4 -> debug.
+# e.g:
+#   ./pkr.sh validate home
+#   ./pkr.sh build home ask debug
+
+# Testing:
   ./pkr.sh build 01-bare-minimum
   ./pkr.sh build 02-bios-seabios
   ./pkr.sh build 03-cpu
   ./pkr.sh build 04-memory
   ./pkr.sh build 05-multiple-disks
   ./pkr.sh build 06-multiple-networks
+
+# Real use:
   ./pkr.sh build home
   ./pkr.sh build homelab
 ```

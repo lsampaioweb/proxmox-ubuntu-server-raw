@@ -10,5 +10,5 @@ template_description = "Ubuntu server 24.04.2 template with BIOS set to SeaBIOS 
 bios = "seabios"
 
 # Boot
-iso_file           = "ubuntu-24.04.2-live-server-amd64.iso"
+iso_file           = "ubuntu-24.04.3-live-server-amd64.iso"
 iso_full_file_path = "CephFS:iso/{iso_file}"
