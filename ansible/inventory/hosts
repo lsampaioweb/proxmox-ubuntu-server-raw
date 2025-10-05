@@ -5,12 +5,12 @@ localhost
 ansible_connection=local
 ansible_python_interpreter=/usr/bin/python3
 
-[testing]
-# For testing
-test-server ansible_host=<ip>
-
 [home]
 edge-pve-[01:02]
 
 [homelab]
 pve-[01:07]
+
+[testing]
+# For testing.
+test-server ansible_host=<ip>
