@@ -1,28 +1,28 @@
 ---
 - name: "Changing the hostname"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/hostname.yml"
 
 - name: "Adding CA certificates to system trust store"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/trust-ca-certificate.yml"
 
 - name: "Adding CA certificates to pipx environments"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/packages/pipx-fix-ssl.yml"
 
 - name: "Configuring system timezone"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/timezone.yml"
   vars:
     timezone: "{{ system_settings.timezone }}"
 
 - name: "Configuring NTP server"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/ntp-servers.yml"
   vars:
@@ -30,19 +30,19 @@
     ntp_servers: "{{ system_settings.ntp.servers }}"
 
 - name: "Enabling Grub boot menu"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/grub-menu.yml"
   vars:
     grub_timeout: "{{ system_settings.grub_timeout }}"
 
 - name: "Setting predictable network interface names"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/network/default-name.yml"
 
 - name: "Disabling IPv6 system-wide"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/network/ipv6-disable.yml"
 
@@ -59,7 +59,7 @@
   ansible.builtin.import_tasks: "enabling-cloud-init.yml"
 
 - name: "Enabling hardware hotplug"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/hardware-hotplug.yml"
 
@@ -67,11 +67,11 @@
   ansible.builtin.import_tasks: "removing-packages.yml"
 
 - name: "Recreating the machine-id file so the new VM can get a new IP"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/machine-id.yml"
 
 - name: "Removing unnecessary files, folders and configuration"
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
     name: "common"
     tasks_from: "debian/os/clean-up.yml"
