@@ -7,9 +7,9 @@
     - "packages.yml"
 
 - name: "Installing global APT packages"
-  ansible.builtin.import_role:
+  ansible.builtin.include_role:
     name: "common"
-    tasks_from: "debian/packages/apt"
+    tasks_from: "debian/packages/apt.yml"
   vars:
     update_cache: true
     upgrade: true

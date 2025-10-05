@@ -1,16 +1,16 @@
 ---
 - name: "Removing unnecessary packages"
-  ansible.builtin.import_role:
+  ansible.builtin.include_role:
     name: "common"
-    tasks_from: "debian/packages/apt"
+    tasks_from: "debian/packages/apt.yml"
   vars:
     packages:
       - {name: "unattended-upgrades", state: "absent"}
 
 - name: "Removing dependencies that are no longer required and unnecessary packages from the cache"
-  ansible.builtin.import_role:
+  ansible.builtin.include_role:
     name: "common"
-    tasks_from: "debian/packages/apt"
+    tasks_from: "debian/packages/apt.yml"
   vars:
     autoremove: true
     autoclean: true
