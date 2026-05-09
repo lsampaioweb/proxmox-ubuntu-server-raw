@@ -4,14 +4,14 @@ ca_certificates_path: "/usr/local/share/ca-certificates"
 
 # Files that will be copied to the CA certificates path.
 ca_certificates:
-  - "ca.lan.homelab.crt"
+  - "root-ca.lan.home.crt"
 
 # SSH known hosts file.
 ssh_known_hosts: "/etc/ssh/ssh_known_hosts"
 
 # SSH CA public keys for host verification.
 ssh_host_ca_keys:
-  - "ca.lan.homelab.pub"
+  - "root-ca.lan.home.pub"
 
 system_settings:
   # Sets the system's timezone.
