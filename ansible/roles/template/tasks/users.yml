@@ -1,6 +1,7 @@
 ---
 - name: "Creating the local user account and configuring sudo permissions"
   when: password_id is defined
+  no_log: "{{ not (debug | default(false)) }}"
   block:
     - name: "Creating the local account: {{ user_password_id }}"
       ansible.builtin.user:
