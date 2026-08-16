@@ -28,7 +28,6 @@ applyTo: "**/roles/**"
 
 ### Variable boundaries
 - Keep role defaults and vars scoped to the role.
-- Use `defaults/main.yml` for values that callers should be able to override via group_vars, host_vars, or playbook vars.
 - Use `vars/main.yml` for role-internal constants that must not be overridden by callers.
 - Keep host- or environment-wide values in `group_vars` or role `vars` files.
 - Reference group_vars values through named variables, not through direct lookup calls inside roles.
