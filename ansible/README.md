@@ -1,37 +1,45 @@
-# proxmox-ubuntu-server-raw
-Project with Ansible scripts to create an Ubuntu template on Proxmox from an ISO file with the bare minimum packages and updates.
+# Ansible Automation
 
-### Manual Usage:
+Ansible playbooks for Ubuntu template and VM configuration.
 
-1. Change to the ansible directory.
-    ```bash
-    cd ansible
-    ```
+## Quick Start
 
-1. Run the playbooks as needed:
+```bash
+cd ansible
 
-    1. Proxmox VM:
+# Configure template
+ansible-playbook template.yml -e "password_id=ubuntu-24-04-server-raw"
 
-        Install and setup application.
-        ```bash
-        ansible-playbook template.yml -e "password_id=ubuntu-24-04-server-raw"
-        ```
+# Configure Proxmox VM
+ansible-playbook kvm_setup.yml -e "node=proxmox-node vm_name=ubuntu-raw cpu_type=x86-64-v2-AES hotplug=disk,network,cpu"
 
-        Setup VM settings on Proxmox.
-        ```bash
-        ansible-playbook kvm_setup.yml -e "node=edge-pve-01 vm_name=ubuntu-24-04-server-raw cpu_type=x86-64-v2-AES hotplug=disk,network,cpu"
-        ```
+# Configure local machine
+ansible-playbook localhost.yml -e "hostname=my-machine" -K
+```
 
-    1. Virtualbox VM:
+## Key Files
 
-        **Explanation of Flags:**
-        - `-K` - Prompts for the **sudo password** to execute tasks as root.
+- `ansible.cfg` - Runtime configuration
+- `template.yml` - Template configuration (primary)
+- `kvm_setup.yml` - Proxmox VM setup
+- `localhost.yml` - Local machine setup
+- `roles/` - Reusable automation logic
+- `inventory/hosts` - Host inventory
 
-        Install and setup application.
-        ```bash
-        ansible-playbook localhost.yml -e "hostname=working-machine" -K
-        ```
-#
-### Created by:
+## Roles
 
-1. Luciano Sampaio.
+- **common** - OS utilities and system configuration
+- **template** - Ubuntu template setup
+- **kvm_setup** - Proxmox KVM configuration
+
+## Configuration
+
+- Global vars: `group_vars/all.yml`
+- Role vars: `roles/*/vars/main.yml`
+- Runtime override: `-e "key=value"`
+
+## Notes
+
+- All playbooks are idempotent (safe to run multiple times)
+- Secrets stored in system keyring (Linux: `secret-tool`, macOS: Keychain)
+- No hardcoded credentials in code

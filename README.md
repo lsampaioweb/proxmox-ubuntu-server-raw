@@ -1,68 +1,63 @@
 # proxmox-ubuntu-server-raw
 
-Project with Packer and Ansible scripts to create an Ubuntu template on Proxmox from an ISO file with the bare minimum packages and updates.
+Minimal Ubuntu template automation for Proxmox using Packer and Ansible.
 
-### Overview
+## Quick Start
 
-This project can be used in two main scenarios:
+```bash
+# Clone repository
+git clone --recurse-submodules https://github.com/lsampaioweb/proxmox-ubuntu-server-raw.git
+cd proxmox-ubuntu-server-raw
 
-1. **Proxmox VM (Recommended)**:
+# Build with Packer (Proxmox)
+cd packer
+packer build -var-file="env/homelab/vars.pkrvars.hcl" config.pkr.hcl
 
-    If your VM is created via **Packer** (and optionally Terraform), most Ansible playbooks will be executed automatically as part of the provisioning process. You do not need to run them manually.
+# OR configure with Ansible (VirtualBox/custom)
+cd ansible
+ansible-playbook template.yml -e "password_id=ubuntu-24-04-server-raw"
+```
 
-1. **Manual Setup (VirtualBox or Custom VM)**:
+## What's Included
 
-    If you created your VM manually (e.g., in VirtualBox), you need to run the Ansible playbooks yourself.
+- **Packer** - Build Ubuntu images from ISO
+- **Ansible** - Configure VMs with essential packages and security
+- **Roles** - Modular configuration (common, template, kvm_setup)
+- **Cloud-Init** - VM provisioning support
 
-### Installation and Setup
+## Key Features
 
-### 1. Prepare the Environment
+✓ Minimal footprint (essential packages only)
+✓ Idempotent automation (safe to re-run)
+✓ Security hardened (SSH, CA certs, IPv6 disabled)
+✓ Cross-platform (Proxmox, VirtualBox, KVM)
+✓ Secrets in system keyring (no hardcoded credentials)
 
-**For both Proxmox VMs and VirtualBox:**
+## Directory Structure
 
-Open a terminal and execute the following steps:
+```
+ansible/          Playbooks and roles
+packer/           Packer build configuration
+  iso/            ISO build details
+  env/            Environment variables
+```
 
-1. Update package lists and upgrade installed packages
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
+## Documentation
 
-1. Install Git (if not already installed)
-    ```bash
-    sudo apt install -y git
-    ```
+- **Ansible** → [ansible/README.md](ansible/README.md)
+- **Packer** → [packer/README.md](packer/README.md)
 
-1. Create a Git directory and navigate to it
-    ```bash
-    mkdir -p ~/git && cd ~/git
-    ```
+## Prerequisites
 
-1. Clone the repository and initialize submodules
-    ```bash
-    git clone --recurse-submodules https://github.com/lsampaioweb/proxmox-ubuntu-server-raw.git && cd proxmox-ubuntu-server-raw
-    ```
+- Proxmox VE, VirtualBox, or KVM hypervisor
+- Packer (for building) or Ansible 2.10+ (for manual setup)
+- Git
 
-1. If the repository is already cloned, update submodules
-    ```bash
-    git submodule update --init --recursive
-    ```
+## Support
 
-### 2. Deploy the Template
+For issues: Check [packer/README.md](packer/README.md) or [ansible/README.md](ansible/README.md) for detailed troubleshooting.
 
-Choose one of the following methods:
+## License
 
-- **[Packer](packer/README.md "Packer")** (Recommended for Proxmox) – Automated deployment if your Proxmox cluster is operational.
-- **[Ansible](ansible/README.md "Ansible")** – Manual configuration for VirtualBox VMs when Packer isn't available.
-
-#
-### Links:
-
-[Links](links.md "Links")
-
-### License:
-
-[MIT](LICENSE "MIT License")
-
-### Created by:
-
-1. Luciano Sampaio.
+MIT
+Author: Luciano Sampaio
