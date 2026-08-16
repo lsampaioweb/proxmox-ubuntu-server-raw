@@ -5,7 +5,7 @@
     tasks_from: "debian/packages/apt.yml"
   vars:
     packages:
-      - {name: "unattended-upgrades", state: "absent"}
+      - { name: "unattended-upgrades", state: "absent" }
 
 - name: "Removing dependencies that are no longer required and unnecessary packages from the cache"
   ansible.builtin.import_role:

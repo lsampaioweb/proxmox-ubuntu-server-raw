@@ -25,7 +25,12 @@ applyTo: "**/*.yml"
 - Nest a block inside another block when its `when` condition evaluates a registered variable produced by the outer block's tasks.
 
 ### Task key order
-- Keep task key order: `name` → `when` → `no_log` → module FQCN → `args`/`vars` → `loop`/`loop_control` → `register` → `changed_when`/`failed_when` → `notify`.
+- Keep task key order: `name` → `when` → `no_log` → `become` → `delegate_to` → `run_once` → `environment` → module FQCN → `args`/`vars` → `loop`/`loop_control` → `register` → `changed_when`/`failed_when` → `notify`.
+- Place `become` and `become_user` before the module to enable privilege escalation.
+- Place `delegate_to` before the module to target task execution on a different host.
+- Place `run_once: true` before the module for controller-side operations.
+- Place `environment` variables before the module when task-scoped environment variables are needed.
+- Omit keys that are not needed for the task; only include keys used in the task in the specified order.
 
 ### Import vs include policy
 - Use `ansible.builtin.import_tasks` for static task-file composition known at parse time.
